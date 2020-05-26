@@ -16,8 +16,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e6df309f1.png">
 <meta property="og:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/1724cbe9d51d2a49.png">
+<meta property="og:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e7375e297.png">
+<meta property="og:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e73e62ce7.png">
+<meta property="og:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e72b9d018.png">
+<meta property="og:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e73d928ad.png">
 <meta property="article:published_time" content="2018-01-25T16:48:32.000Z">
-<meta property="article:modified_time" content="2020-05-26T02:05:51.709Z">
+<meta property="article:modified_time" content="2020-05-26T02:18:14.298Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e6df309f1.png">
@@ -92,11 +96,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>为了保证代码质量，Code Review 是非常重要的一环，受限于现实情况，大多数团队没有足够的时间进行 Code Review，那么只能把一部分 CR 工作交给计算机去完成了。我们只需要定下合理的流程，用代码告诉计算机需要做什么，剩下的就交给我们可靠的伙伴吧。</p>
-<p>应用了自动化 Code Review 后，如果你的代码写得不好，Xcode 会表示不开心。<br><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e6df309f1.png" alt="aaaa.png"></p>
+<p>应用了自动化 Code Review 后，如果你的代码写得不好，Xcode 会表示不开心。<br><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e6df309f1.png" alt="16a34c6e6df309f1.png"></p>
 <p>如果你忽略 Xcode 的心情，那么质量管理平台会默默地记录这一切</p>
-<p><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/1724cbe9d51d2a49.png" alt="aaaa.png"></p>
+<p><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/1724cbe9d51d2a49.png" alt="1724cbe9d51d2a49.png"></p>
 <p>这套东西既帮助开发们写出更高质量的的代码，也给经理们对工程质量的评估提供了一个切面的支持，同时只需要花费较少的人力维护</p>
 <h2 id="OCLint"><a href="#OCLint" class="headerlink" title="OCLint"></a>OCLint</h2><p><strong>工欲善其事，必先利其器</strong></p>
+<p><a href="http://oclint.org" target="_blank" rel="noopener">OCLint</a>是一个开源的，基于 Clang 用 C++ 编写而成的，可以用于 C、C++ 和 Objective-C 的静态代码分析器。它可以在扫描的过程中动态加载规则文件（Rules），因此可以实现非常灵活的，高度可自定义的代码分析方案。它几乎可以和大多数系统无缝集成，例如 Cmake、Bear、xcodebuild、xctool、Xcode、xcpretty、Jenkins CI、Travis CI 等。</p>
+<p>OCLint 通过代码并寻找潜在问题来提高质量和减少缺陷，比如：</p>
+<ol>
+<li>可能的错误 - 清空if / else / try / catch / finally语句</li>
+<li>未使用的代码 - 未使用的本地变量和参数</li>
+<li>复杂的代码 - 高回圈复杂度，NPath复杂度和高NCSS</li>
+<li>冗余代码 - 冗余如果语句和无用的括号</li>
+<li>代码气味 - 长方法和长参数列表</li>
+<li>不好的做法 - 倒逻辑和参数重新分配<br>…</li>
+</ol>
+<h2 id="OCLint-安装"><a href="#OCLint-安装" class="headerlink" title="OCLint 安装"></a>OCLint 安装</h2><p>确保你已经安装了 <a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">Homebrew</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap oclint&#x2F;formulae</span><br><span class="line"></span><br><span class="line">$ brew install oclint</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新-OCLint"><a href="#更新-OCLint" class="headerlink" title="更新 OCLint"></a>更新 OCLint</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ brew update</span><br><span class="line"></span><br><span class="line">$ brew upgrade oclint</span><br></pre></td></tr></table></figure>
+
+<p>安装好后在终端中输入 oclint 验证是否成功安装，如出现如下提示说明已安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ oclint</span><br><span class="line"></span><br><span class="line">oclint: Not enough positional command line arguments specified!</span><br><span class="line"></span><br><span class="line">Must specify at least 1 positional arguments: See: oclint -help</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用本地-Review"><a href="#使用本地-Review" class="headerlink" title="使用本地 Review"></a>使用本地 Review</h2><ol>
+<li>首先在电脑本地安装好 OCLint 并拿到公司自定义的 Rules 文件</li>
+<li><a href="http://docs.oclint.org/en/stable/guide/xcode.html" target="_blank" rel="noopener">在 Xcode 上配置好工程</a></li>
+</ol>
+<p><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e7375e297.png" alt="16a34c6e7375e297.png"><br><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e73e62ce7.png" alt="16a34c6e73e62ce7.png"><br><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e72b9d018.png" alt="16a34c6e72b9d018.png"><br><img src="https://github.com/MExuanHe/MExuanHe.github.io/raw/master/fancybox/images/16a34c6e73d928ad.png" alt="16a34c6e73d928ad.png"></p>
+<ol start="3">
+<li>build工程，等待结果显示在Xcode上。</li>
+</ol>
 
       
     </div>
